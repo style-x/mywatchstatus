@@ -4,22 +4,19 @@ const button = document.querySelector('#button');
 
 let myLibrary = [];
 
-
 function getData() {
   if(localStorage.mvb) {
-      let data = localStorage.getItem('mvb');
+      let data = localStorage.getItem('mywatchstatus');
       myLibrary = JSON.parse(data);
       build();
-  };
+  }
 };
-
 
 function submit(event) { 
   event.preventDefault();
   putNewDataInStorage();
   modal.close(); 
 };
-
 
 function putNewDataInStorage() {
   let title = document.getElementById('title').value;
@@ -34,8 +31,9 @@ function putNewDataInStorage() {
     nbr_of_pages: pages,
     read_status: isRead?true:false,
     insertion_date: new Date()
-  };
+  }
+
   myLibrary.push(newData);
-  localStorage.setItem(`mvb`, JSON.stringify(myLibrary));
+  localStorage.setItem(`mywatchstatus`, JSON.stringify(myLibrary));
   build();
 };
